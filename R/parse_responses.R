@@ -22,8 +22,11 @@ chat_completion_to_tibble <- function(response, other_data = NULL) {
     purrr::map(purrr::list_flatten) |>
     purrr::map(as_tibble) |>
     purrr::list_rbind()
-  addl_data <- as_tibble(other_data)
-  dplyr::bind_cols(row, messages, addl_data)
+  out <- dplyr::bind_cols(row, messages)
+  if (length(other_data == 0)) {
+    out <- dplyr::bind_cols(out, as_tibble(other_data))
+  }
+  out
 }
 
 #' Convert multiple chat completions to a tibble
