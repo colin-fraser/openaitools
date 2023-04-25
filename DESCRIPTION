@@ -15,3 +15,5 @@ Imports:
     rlang,
     tibble,
     wrapify
+URL: https://github.com/colin-fraser/openaitools
+BugReports: https://github.com/colin-fraser/openaitools/issues
